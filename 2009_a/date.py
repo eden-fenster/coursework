@@ -285,10 +285,10 @@ class StudentList:
             if birthday not in birthday_list:
                 birthday_list.append(birthday)
                 continue
-        for i in range(0, len(list_of_students)):
+        for i in range(0, len(list_of_students) - 1):
             birthday_one: Tuple[int, int] = (list_of_students[i].get_birthday().get_day(),
                                              list_of_students[i].get_birthday().get_month())
-            for j in range(i + 1, len(list_of_students) + 1):
+            for j in range(i + 1, len(list_of_students)):
                 birthday_two: Tuple[int, int] = (list_of_students[j].get_birthday().get_day(),
                                                  list_of_students[j].get_birthday().get_month())
                 if abs(compute_days_without_year(birthday_one) - compute_days_without_year(birthday_two)) > maximum:
