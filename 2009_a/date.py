@@ -210,6 +210,36 @@ class StudentNode:
         self._next_up = n
 
 
+def compute_days_without_year(birthday: Tuple[int, int]) -> int:
+    if birthday[0] == 29 and birthday[1] == 2:
+        return 60
+    if birthday[1] == 1:
+        return 31 - (31 - birthday[0])
+    if birthday[1] == 2:
+        return 31 + 28 - (28 - birthday[0])
+    if birthday[1] == 3:
+        return 31 + 28 + 31 - (31 - birthday[0])
+    if birthday[1] == 4:
+        return 31 + 28 + 31 + 30 - (30 - birthday[0])
+    if birthday[1] == 5:
+        return 31 + 30 + 31 + 28 + 31 - (31 - birthday[0])
+    if birthday[1] == 6:
+        return 30 + 31 + 30 + 31 + 28 + 31 - (30 - birthday[0])
+    if birthday[1] == 7:
+        return 31 + 30 + 31 + 30 + 31 + 28 + 31 - (31 - birthday[0])
+    if birthday[1] == 8:
+        return 31 + 31 + 30 + 31 + 30 + 31 + 28 + 31 - (31 - birthday[0])
+    if birthday[1] == 9:
+        return 30 + 31 + 31 + 30 + 31 + 30 + 31 + 28 + 31- (30 - birthday[0])
+    if birthday[1] == 10:
+        return 31 + 30 + 31 + 31 + 30 + 31 + 30 + 31 + 28 + 31 - (31 - birthday[0])
+    if birthday[1] == 11:
+        return 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30 + 31 + 28 + 31 - (30 - birthday[0])
+    if birthday[1] == 12:
+        return 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30 + 31 + 28 + 31 - (31 - birthday[0])
+    return 0
+
+
 class StudentList:
     def __init__(self, no_of_students: int, s: StudentNode = None):
         self.head = s
@@ -246,35 +276,6 @@ class StudentList:
     def sort(self):
         sorted_list = sorted(self.get_students(), key=lambda studentnode: StudentNode.get_birthday().get_year())
         return sorted_list
-
-    def compute_days_without_year(self, birthday: Tuple[int, int]) -> int:
-        if birthday[0] == 29 and birthday[1] == 2:
-            return 60
-        if birthday[1] == 1:
-            return 31 - (31 - birthday[0])
-        if birthday[1] == 2:
-            return 31 + 28 - (28 - birthday[0])
-        if birthday[1] == 3:
-            return 31 + 28 + 31 - (31 - birthday[0])
-        if birthday[1] == 4:
-            return 31 + 28 + 31 + 30 - (30 - birthday[0])
-        if birthday[1] == 5:
-            return 31 + 30 + 31 + 28 + 31 - (31 - birthday[0])
-        if birthday[1] == 6:
-            return 30 + 31 + 30 + 31 + 28 + 31 - (30 - birthday[0])
-        if birthday[1] == 7:
-            return 31 + 30 + 31 + 30 + 31 + 28 + 31 - (31 - birthday[0])
-        if birthday[1] == 8:
-            return 31 + 31 + 30 + 31 + 30 + 31 + 28 + 31 - (31 - birthday[0])
-        if birthday[1] == 9:
-            return 30 + 31 + 31 + 30 + 31 + 30 + 31 + 28 + 31- (30 - birthday[0])
-        if birthday[1] == 10:
-            return 31 + 30 + 31 + 31 + 30 + 31 + 30 + 31 + 28 + 31 - (31 - birthday[0])
-        if birthday[1] == 11:
-            return 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30 + 31 + 28 + 31 - (30 - birthday[0])
-        if birthday[1] == 12:
-            return 31 + 30 + 31 + 30 + 31 + 31 + 30 + 31 + 30 + 31 + 28 + 31 - (31 - birthday[0])
-        return 0
 
     def max_days_without_birthdays(self) -> int:
         maximum: int = 1
